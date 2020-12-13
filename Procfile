@@ -1,0 +1,1 @@
+web: gunicorn psisreclamo.wsgi --log-file -

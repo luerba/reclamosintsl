@@ -1,0 +1,42 @@
+{% load static %}
+<!-- {% url 'index' as inde_url %} -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dando estilo a tablas</title>
+
+     <link rel="stylesheet" href="{% static 'css/tabla.css' %}"> 
+</head>
+<body> 
+    <h2>Lista de VIAJEROS HOY</h2>
+	<div id="main-container">
+
+		<table>
+			<thead>
+				<tr>
+					<th>Apellido</th><th>Nombre</th><th>Dni</th><th>Fecha Pago</th><th>Monto</th>
+				</tr>
+            </thead>
+            {% for via in list_pag %}
+            <tr>
+                <!-- <td>{{ via.viajero.apellido }}</td>
+                <td>{{ via.viajero.nombre }}</td>
+                <td>{{ via.viajero.dni }}</td> -->
+                <td>{{ via.fecha_pago }}</td>
+                <td>{{ via.monto }}</td>
+                            
+                                
+            </tr>
+            {% endfor%}
+            </table>
+                                  
+                        
+    </div>
+    <!-- <input id="submit" type="button" value="volver" {{admi_url}} /> -->
+    <!-- <button class="btn btn-primary" onclick="location.href={{inde_url}}">Logout</button> -->
+</body>
+</html>  

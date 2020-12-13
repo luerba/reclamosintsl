@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dando estilo a tablas</title>
+    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"> -->
+        
+        
+    
+	<link rel="stylesheet" href="{% static 'reclamo/css/tabla1.css' %}">
+</head>
+<body>
+    <h2>Lista de Reclamos</h2>
+	<div id="main-container">
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Id</th><th>Fecha</th><th>Reparticion</th><th>Motivo</th><th>Estado</th><th>Opciones</th>
+				</tr>
+            </thead>
+            {% for fila in list_rec %}
+            <tr>
+                <td>{{ fila.id }}</td>
+                <td>{{ fila.Fecha_reclamo }}</td>
+                <td>{{ fila.cod_repart }}</td>
+                <td>{{ fila.motivo }}</td>
+                <td>
+                    {% if fila.estadia_reclamo == '1' %}
+                        Realizado
+                    {% elif fila.estadia_reclamo == '2' %}
+                        Pendiente
+                    {% elif fila.estadia_reclamo == '3' %}
+                        Paralizado
+                    {%endif%}
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></button>                        
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="generarReclamoPDF/{{fila.id}}">Generar reporte (PDF)</a>                                                    
+                            <div class="dropdown-divider"></div>                                                    
+                        </div>
+                             </div>
+                                    
+                                
+                </td>
+                                            
+            </tr>
+            {% endfor%}
+                                                
+            
+            </table>
+                                  
+                        
+	</div>
+</body>
+</html>
+
