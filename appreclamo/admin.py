@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from appreclamo.models import Clientes, Articulos, Pedidos, Viajero, Reserva, Pagos, Reparticion, Reclamos, Agentes
+from appreclamo.models import Clientes, Articulos, Pedidos, Viajero, Reserva, Pagos, Reparticion, Reclamos, Agentes,Empleados,Funcion,Sitlab
 
 # Register your models here.
 
@@ -92,6 +92,35 @@ class ReservaAdmin(admin.ModelAdmin):
     get_nombre.short_description = 'Viajero'
     get_nombre.admin_order_field = 'nombre viajero '
 
+
+class EmpleadosAdmin(admin.ModelAdmin):
+    
+    #model = Reclamos
+    search_fields=("nombre",)
+    list_filter=("cod_func","cod_sitlab","turno",)        
+    #date_hierarchy=("Fecha_reclamo")
+    list_display = ['nombre' ,'numdoc' ,'cod_func','turno','cod_sitlab','Fecha_nac','cuil',]
+
+
+
+class FuncionAdmin(admin.ModelAdmin):     
+    list_display = ['nombre' ,]
+  
+    
+#     #list_filter=("Fecha_reclamo","estadia_reclamo",)    
+#     #date_hierarchy=("Fecha_reclamo")
+
+
+
+class SitlabAdmin(admin.ModelAdmin):
+    list_display = ['nombre' ,]
+#     #model = Reclamos
+#     search_fields=("nombre",)
+#     #list_filter=("Fecha_reclamo","estadia_reclamo",)    
+#     #date_hierarchy=("Fecha_reclamo")
+#     list_display = ['Nombre' ,]
+
+
 # fin nuevo codigo
 
 
@@ -108,6 +137,12 @@ admin.site.register(Agentes,AgenteAdmin)
 
 #admin.site.register(Reserva,ReservaAdmin)
 admin.site.register(Reparticion,ReparticionAdmin)
+admin.site.register(Empleados,EmpleadosAdmin)
+admin.site.register(Funcion,FuncionAdmin)
+admin.site.register(Sitlab,SitlabAdmin)
+
+
+
 
 # fin nuevo
 admin.site.site_header = "SISTEMA DE RECLAMOS" 

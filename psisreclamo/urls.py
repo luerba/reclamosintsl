@@ -35,7 +35,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reclam/', views.web_reclamos,name='lireclamo'),    
+    path('reclam/', views.web_reclamos,name='lireclamo'), 
+    path('listarRecpen/', views.reclamopen, name='listarRecpen'),
+    path('listarRecrea/', views.reclamorea, name='listarRecrea'),
     #path('listarReclamos/', views.ListarReclamos.as_view(), name='listarReclamos'),
     path('listarReclamos/', views.ListarReclamos, name='listarReclamos'),
     #path('listarReclamos/generarReclamoPDF/<int:p>',views.GenerarReclamoPDF.as_view(), name='generarReclamoPDF'),

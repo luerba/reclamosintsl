@@ -6,7 +6,6 @@
 {% url 'listarReclamos' as lisre_url %}
 {% url 'lireclamo' as lrec_url %}
 {% url 'listarRecpen' as recpen_url %}
-{% url 'listarRecrea' as recrea_url %}
 
 
 
@@ -70,22 +69,9 @@
       <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
       <div class="inner">
-        <h3 class="masthead-brand">Sistema de Reclamos</h3>
+        <h3 class="masthead-brand">Lista Reclamos Pendientes</h3>
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="{{inde_url}}">Inicio</a>
-          <a class="nav-link" href="{{admi_url}}">Admin</a>          
-          <a class="nav-link" href="{{lrec_url}}">Imprime Orden </a>
-          <a> &nbsp </a>
-          <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Est Reclamo
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="{{recpen_url}}">Pendiente</a>
-        <a class="dropdown-item" href="{{recrea_url}}">Realizado</a>        
-      </div>
-    </li>
+          <a class="nav-link active" href="{{inde_url}}">Inicio</a>          
         </nav>
       </div>
     </header>
@@ -101,7 +87,7 @@
 				     	<th>Fecha</th><th>Reparticion</th><th>Motivo</th><th>Estado</th>             
             </thead>
       
-            {% for via in list_rec %}
+            {% for via in list_rec_pen %}
             <tr>
                 <td>{{ via.Fecha_reclamo|date:"dM,y" }}</td>
                 <td>{{ via.cod_repart }}</td>
@@ -132,11 +118,3 @@
      </div>
   </body>
 </html>
-
-
-  
-
-
-
-
-

@@ -145,4 +145,14 @@ def index(request):
     return render(request,"index.html", locals())
 
          
-#
+def reclamopen(request):
+    
+    list_rec_pen = Reclamos.objects.filter(estadia_reclamo='2') 
+            
+    return render(request,"listarecpen.html", locals())
+
+def reclamorea(request):
+    
+    list_rec_rea = Reclamos.objects.filter(estadia_reclamo='1') 
+            
+    return render(request,"listarecrea.html", locals())

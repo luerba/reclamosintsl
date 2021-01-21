@@ -5,6 +5,43 @@ from django.utils import timezone
 # Create your models here.
 # por cada tabla una clase
 
+class Sitlab(models.Model):
+    nombre = models.CharField(max_length=50, null=True,unique=True)
+    observacion = models.CharField(max_length=150,blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+
+class Funcion(models.Model):
+    nombre = models.CharField(max_length=70, null=True,unique=True)
+    observacion = models.CharField(max_length=150,blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+class Empleados(models.Model):
+    nombre = models.CharField(max_length=80, blank=False)
+    numdoc = models.CharField(max_length=12, blank=False)
+    domicilio = models.CharField(max_length=80, blank=True)    
+    cod_func = models.ForeignKey(Funcion,to_field='nombre', on_delete=models.CASCADE)
+    telef = models.CharField(max_length=12, blank=True)
+    turno = models.CharField(max_length=30, blank=True)
+    cuil = models.CharField(max_length=12, blank=True)
+    cod_sitlab = models.ForeignKey(Sitlab,to_field='nombre', on_delete=models.CASCADE)
+    Fecha_nac = models.DateField(null=True)
+    observacion = models.CharField(max_length=150,blank=True)
+
+    def __str__(self):
+        return self.nombre
+
+
+
+
+
+
+
+
 class Reparticion(models.Model):
     #id
     nombre = models.CharField(max_length=60, null=True,unique=True)
