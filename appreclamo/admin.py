@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from appreclamo.models import Clientes, Articulos, Pedidos, Viajero, Reserva, Pagos, Reparticion, Reclamos, Agentes,Empleados,Funcion,Sitlab
+from appreclamo.models import Clientes, Articulos, Pedidos, Viajero,Reserva, Pagos, Reparticion, Reclamos, Agentes,Empleados,Funcion,Sitlab,Anuncios
+     
 
 # Register your models here.
 
@@ -129,6 +130,7 @@ class SitlabAdmin(admin.ModelAdmin):
 #admin.site.register(Pedidos,PedidosAdmin)
 #admin.site.register(Viajero,ViajeroAdmin)
 #admin.site.register(Pagos,PagosAdmin)
+admin.site.register(Anuncios)
 admin.site.register(Reclamos,ReclamoAdmin)
 admin.site.register(Agentes,AgenteAdmin)
 

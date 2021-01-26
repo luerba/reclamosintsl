@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from appreclamo.models import Viajero, Reserva, Pedidos, Pagos, Reclamos # agrege pedidos
+from appreclamo.models import Viajero, Reserva, Pedidos, Pagos, Reclamos, Anuncios # agrege pedidos
 #from my_app import views
 from django.db.models import Q
 from django.views import View
@@ -144,7 +144,16 @@ def index(request):
             
     return render(request,"index.html", locals())
 
-         
+
+def anuncio(request):
+    
+    list_rec = Anuncios.objects.all().order_by('-Fecha_anuncio') 
+            
+    return render(request,"anuncio.html", locals())
+
+
+
+
 def reclamopen(request):
     
     list_rec_pen = Reclamos.objects.filter(estadia_reclamo='2') 

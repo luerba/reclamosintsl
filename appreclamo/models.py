@@ -5,6 +5,19 @@ from django.utils import timezone
 # Create your models here.
 # por cada tabla una clase
 
+
+class Anuncios(models.Model):
+    Fecha_anuncio = models.DateField(null=False)
+    Titulo = models.CharField(max_length=50, blank=True)
+    Mensaje1 = models.CharField(max_length=150,null=True)
+    Mensaje2 = models.CharField(max_length=150,blank=True)
+    Mensaje3 = models.CharField(max_length=150,blank=True)
+
+    def __str__(self):
+        return self.Titulo
+
+
+
 class Sitlab(models.Model):
     nombre = models.CharField(max_length=50, null=True,unique=True)
     observacion = models.CharField(max_length=150,blank=True)

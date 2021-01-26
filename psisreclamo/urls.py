@@ -31,10 +31,9 @@ from django.conf.urls.static import static
 
 # )
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('lanuncio/', views.anuncio,name='lanuncio'), 
     path('reclam/', views.web_reclamos,name='lireclamo'), 
     path('listarRecpen/', views.reclamopen, name='listarRecpen'),
     path('listarRecrea/', views.reclamorea, name='listarRecrea'),

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios</title>
+    <style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 20px;
+            background-color: orange;
+             
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">
+    <p style="color: rgb(32, 4, 124);">Intendencia Edificios Administrativos</p>
+    </h1>
+   
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-block">
+                <div class="card-title-block">
+                    <h2 style="color: rgb(32, 4, 124);" align="center" class="title">Anuncios</h2>
+                </div>
+                
+                
+                <section class="example">
+                    <div class="table-responsive">
+                                                   
+                            
+                                {% for fila in list_rec %}
+                                <p>------------------------ </p>
+                                
+                                <p style="color: rgb(32, 4, 124);">Numero:   {{ fila.id }}     </p>
+                                <p>Fecha Anuncio:   {{ fila.Fecha_anuncio }}     </p>
+                                <p>Titulo:   {{ fila.Titulo }}     </p>
+                                <p>   {{ fila.Mensaje1 }}     </p>
+                                <p>   {{ fila.Mensaje2 }}     </p>
+                                <p>   {{ fila.Mensaje3 }}     </p>                                                                                                  
+
+                             
+                                    
+                                {% endfor %}
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    
+    
+
+
+
+
+</body>
+</html>
