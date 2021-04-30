@@ -49,7 +49,7 @@ class ReparticionAdmin(admin.ModelAdmin):
     
     ordering = ['nombre']    
     list_display=("nombre", "ubicacion", "telefono")
-    search_fields=("nombre",)
+    #search_fields=("nombre",)
     #list_filter=("fecha_reserva",)
 
 class AgenteAdmin(admin.ModelAdmin):
@@ -67,7 +67,7 @@ class ReclamoAdmin(admin.ModelAdmin):
     list_filter=("Fecha_reclamo","estadia_reclamo",)    
     date_hierarchy=("Fecha_reclamo")
     list_display = ['Fecha_reclamo', 'cod_repart','motivo','Pedido_por','estadia_reclamo','cod_agente','prioridad_reclamo',]
-    autocomplete_fields = ['cod_repart']
+    #autocomplete_fields = ['nombre']
 
 class PagosAdmin(admin.ModelAdmin):
     model = Viajero
