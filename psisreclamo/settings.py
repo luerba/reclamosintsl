@@ -24,8 +24,8 @@ SECRET_KEY = 'jb6juc2yo4@=6fy6it5f$kq+7=fwe@vov$i3my2ud6zg@5dv_l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False  # ojo en produccion false
-#DEBUG = True   # ojo en desarrollo true
+# DEBUG = False  # ojo en produccion false
+DEBUG = True   # ojo en desarrollo true
 
 
 ALLOWED_HOSTS = ['*']
@@ -87,25 +87,25 @@ from decouple import config
 # lo desmarco para hacer nuevas migraciones y luego lo asterisqueo
 
 #""" desarrollo
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'BRECLAMO',
-#         'USER': 'postgres',
-#         'PASSWORD': 'luma7078',
-#         'HOST': '127.0.0.1',
-#         'DATABASE_PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'BRECLAMO',
+        'USER': 'postgres',
+        'PASSWORD': 'luma7078',
+        'HOST': '127.0.0.1',
+        'DATABASE_PORT': '5432',
+    }
+}
 
 #"""
 
 # produccion
-DATABASES = { 
-   'default': dj_database_url.config(
-      default=config('DATABASE_URL')
-   )
-}
+# DATABASES = { 
+#    'default': dj_database_url.config(
+#       default=config('DATABASE_URL')
+#    )
+# }
 
 
 

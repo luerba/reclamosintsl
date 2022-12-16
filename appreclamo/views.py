@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from appreclamo.models import Viajero, Reserva, Pedidos, Pagos, Reclamos, Anuncios # agrege pedidos
+from appreclamo.models import Arreglos, Viajero, Reserva, Pedidos, Pagos, Reclamos, Anuncios # agrege pedidos
 #from my_app import views
 from django.db.models import Q
 from django.views import View
@@ -141,8 +141,47 @@ def ListarReclamos(request):
 def index(request):
     
     list_rec = Reclamos.objects.all().order_by('-Fecha_reclamo') 
-            
+
+    
+
+    lista1 = []
+
+    lista2 = []
+    
+    
+    lista1 = Reclamos.objects.filter(estadia_reclamo=1)
+    lista2 = Reclamos.objects.filter(estadia_reclamo=2)
+
+    
+    totpreal = lista1.count()
+    totpend = lista2.count()
+
+        
     return render(request,"index.html", locals())
+
+def reclamarreg(request):
+
+    # reclamo = Reclamos.objects.get(id=p)
+    
+    list_rec = Reclamos.objects.all().order_by('-Fecha_reclamo') 
+    
+            
+    return render(request,"recarr.html", locals())
+
+def varreglos(request,p):
+    
+
+    # Book.objects.filter(title__icontains="beginners")
+    list_rec = Arreglos.objects.filter(cod_reclamo=p).order_by('-Fecha_arreglo')
+    
+    # list_rec = Arreglos.objects.all()
+    # print(list_rec)
+    
+    # list_rec = Reclamos.objects.all().order_by('-Fecha_reclamo') 
+
+    # return render(request,"arreglos.html", {'list_rec': list_rec})        
+    return render(request,"arreglos.html", locals())
+
 
 
 def anuncio(request):

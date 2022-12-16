@@ -37,22 +37,17 @@ class Empleados(models.Model):
     nombre = models.CharField(max_length=80, blank=False)
     numdoc = models.CharField(max_length=12, blank=False)
     domicilio = models.CharField(max_length=80, blank=True)    
-    cod_func = models.ForeignKey(Funcion,to_field='nombre', on_delete=models.CASCADE)
+    cod_func = models.ForeignKey(Funcion, on_delete=models.CASCADE)
     telef = models.CharField(max_length=12, blank=True)
+    telef_contacto = models.CharField(max_length=12, blank=True)
     turno = models.CharField(max_length=30, blank=True)
     cuil = models.CharField(max_length=12, blank=True)
-    cod_sitlab = models.ForeignKey(Sitlab,to_field='nombre', on_delete=models.CASCADE)
+    cod_sitlab = models.ForeignKey(Sitlab, on_delete=models.CASCADE)
     Fecha_nac = models.DateField(null=True)
     observacion = models.CharField(max_length=150,blank=True)
 
     def __str__(self):
         return self.nombre
-
-
-
-
-
-
 
 
 class Reparticion(models.Model):
@@ -104,17 +99,23 @@ class Agentes(models.Model):
 
 
 class Reclamos(models.Model):
-    Fecha_reclamo = models.DateField(null=False)
-    cod_repart = models.ForeignKey(Reparticion,to_field='nombre', on_delete=models.CASCADE)
+    Fecha_reclamo = models.DateField(null=False)    
+    cod_repart = models.ForeignKey(Reparticion,on_delete=models.CASCADE)    
     motivo = models.CharField(max_length=100, blank=False)
     Pedido_por = models.CharField(max_length=60, blank=True)
-    cod_agente  = models.ForeignKey(Agentes,to_field='nombre', on_delete=models.CASCADE)
+    cod_agente  = models.ForeignKey(Agentes,on_delete=models.CASCADE)        
+    Otros_agentes = models.CharField(max_length=150,blank=True) 
     prioridad = [('1','Alta'),('2','Media'),('3','Baja')]
     estado_reclamo = [('1','Realizado'),('2','Pendiente'),('3','Paralizado')]
     prioridad_reclamo = models.CharField(max_length=10,choices=prioridad,blank=True)
     estadia_reclamo = models.CharField(max_length=10,choices=estado_reclamo,blank=True)
     observacion = models.CharField(max_length=150,blank=True) 
     Fecha_realizado = models.DateField(null=True,blank=True)
+
+    def __str__(self):
+        return f"{self.cod_repart} {self.motivo} "
+
+
 
     
     def clean(self):
@@ -123,6 +124,25 @@ class Reclamos(models.Model):
 
         if  self.estadia_reclamo == '2' and   self.Fecha_realizado != None:
             raise ValidationError("Si estado del Reclamo es Pendiente, no debe ingrear fecha realiazado") 
+
+class Arreglos(models.Model):
+    Fecha_arreglo = models.DateField(null=False)    
+    cod_reclamo = models.ForeignKey(Reclamos,on_delete=models.CASCADE)    
+    Arreglo_1 = models.CharField(max_length=150, blank=True)
+    Arreglo_2 = models.CharField(max_length=150, blank=True)
+    Arreglo_3 = models.CharField(max_length=150, blank=True)
+    Arreglo_4 = models.CharField(max_length=150, blank=True)
+    Trabajado_por_1 = models.CharField(max_length=80, blank=True)
+    Trabajado_por_2 = models.CharField(max_length=80, blank=True)
+    Trabajado_por_3 = models.CharField(max_length=80, blank=True)
+    observacion = models.CharField(max_length=150,blank=True) 
+
+    def __str__(self):
+        return f"{self.Fecha_arreglo} {self.cod_reclamo} "
+
+    
+
+
 
 
 class Clientes(models.Model):

@@ -45,6 +45,12 @@ urlpatterns = [
     path('listav/', views.web_visitante),
     path('listapa/', views.web_viajero_pago),
     path('', views.index, name='index'),
+
+    path('reclamarreg/', views.reclamarreg,name='lrecarreg'),
+    path('reclamarreg/varreglo/<int:p>', views.varreglos),
+    
+
+
     #path('',views.index), ### nuevoooo
     re_path(r'^index/$', views.index, name='index'),
     re_path(r'^palista/$', views.web_viajero_pago, name='listpag'),

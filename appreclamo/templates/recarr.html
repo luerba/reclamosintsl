@@ -9,7 +9,6 @@
 {% url 'listarRecrea' as recrea_url %}
 {% url 'lanuncio' as anuncio_url %}
 
-{% url 'lrecarreg' as arreglo_url %}
 
 
 
@@ -79,7 +78,6 @@
           <a class="nav-link" href="{{admi_url}}">Admin</a>          
           <a class="nav-link" href="{{lrec_url}}">Imprime Orden </a>
           <a class="nav-link" href="{{anuncio_url}}">Anuncios </a> 
-          <a class="nav-link" href="{{arreglo_url}}">Rec/arreglo </a> 
           <a class="nav-link" href="https://progintendenciasl.wixsite.com/misitio/distribicion-de-oficinas">Oficinas </a>                   
           <a> &nbsp </a>
           <!-- Dropdown -->
@@ -98,34 +96,13 @@
   
     <main role="main" class="inner cover">
   
-    <table border="1">
-      <tr>
-        <td> ESTADISTICA </td> 
-        
-        <td> Realiazados  {{totpreal}} </td>                   
-        
-        
-         <td> Pendientess  {{totpend}}  </td>                                   
-        
-      <tr>   
-      </table>     
+  
   
           <table border="1">
   		      <thead>
-               
-              
-              
-
-              <tr>
-            
-                <h3><p>Listado de Reclamos</p></h3>   
-               
-
-              
-                
-               
-
-				     	<th>Fecha</th><th>Reparticion</th><th>Motivo</th><th>Estado</th>             
+               <tr>
+               <h3><p>Listado de Reclamos</p></h3>          
+				     	<th>Fecha</th><th>Reparticion</th><th>Motivo</th><th>Estado</th><th>Opciones</th>             
             </thead>
       
             {% for via in list_rec %}
@@ -143,6 +120,17 @@
                   {%endif%}
 
                 </td>
+                <td>
+                  <div class="btn-group">
+                      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></button>                        
+                      <div class="dropdown-menu">
+                          <a class="dropdown-item" href="varreglo/{{via.id}}">Arreglos del Reclamo</a>                                                    
+                          <div class="dropdown-divider"></div>                                                    
+                      </div>
+                           </div>
+                                  
+                              
+              </td>
                                             
             </tr>
             {% endfor%}

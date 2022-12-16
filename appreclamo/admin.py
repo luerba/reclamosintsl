@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
-from appreclamo.models import Clientes, Articulos, Pedidos, Viajero,Reserva, Pagos, Reparticion, Reclamos, Agentes,Empleados,Funcion,Sitlab,Anuncios
+from appreclamo.models import Clientes, Articulos, Pedidos, Viajero,Reserva, Pagos, Reparticion, Reclamos, Agentes,Empleados,Funcion,Sitlab,Anuncios,Arreglos
      
 
 # Register your models here.
@@ -49,7 +49,8 @@ class ReparticionAdmin(admin.ModelAdmin):
     
     ordering = ['nombre']    
     list_display=("nombre", "ubicacion", "telefono")
-    #search_fields=("nombre",)
+    search_fields=("nombre",)
+    # autocomplete_fields = ['nombre']
     #list_filter=("fecha_reserva",)
 
 class AgenteAdmin(admin.ModelAdmin):
@@ -61,13 +62,29 @@ class AgenteAdmin(admin.ModelAdmin):
 
     
 class ReclamoAdmin(admin.ModelAdmin):
+
+
     
     #model = Reclamos
+    
     search_fields=("motivo","cod_repart__nombre",)
     list_filter=("Fecha_reclamo","estadia_reclamo",)    
     date_hierarchy=("Fecha_reclamo")
     list_display = ['Fecha_reclamo', 'cod_repart','motivo','Pedido_por','estadia_reclamo','cod_agente','prioridad_reclamo',]
-    #autocomplete_fields = ['nombre']
+    autocomplete_fields = ['cod_repart','cod_agente']
+
+class ArregloAdmin(admin.ModelAdmin):
+    
+  
+    #model = Reclamos
+    
+    # search_fields=("motivo","cod_repart__nombre",)
+    # list_filter=("Fecha_reclamo","estadia_reclamo",)    
+    # date_hierarchy=("Fecha_reclamo")
+    list_display = ['Fecha_arreglo', 'cod_reclamo', 'Arreglo_1','Arreglo_2','Arreglo_3','Arreglo_4',]
+    # autocomplete_fields = ['cod_repart','cod_agente']
+
+
 
 class PagosAdmin(admin.ModelAdmin):
     model = Viajero
@@ -144,7 +161,7 @@ admin.site.register(Reparticion,ReparticionAdmin)
 admin.site.register(Empleados,EmpleadosAdmin)
 admin.site.register(Funcion,FuncionAdmin)
 admin.site.register(Sitlab,SitlabAdmin)
-
+admin.site.register(Arreglos,ArregloAdmin)
 
 
 
